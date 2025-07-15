@@ -8,7 +8,124 @@
 #include <math.h>
 
 
-namespace Geometry{
+namespace Geometry{			
+	
+	/*-------------------------------------------0.Math functions (sin, cos, arcsin etc...)---------------------------------------------------*/
+
+	int INT_Pow(int base, int exponent) { // realisation of pow function
+
+		int result = 1;
+		if(exponent > 0) {
+
+    		for (int i = 0; i < exponent; i++) {
+        	result *= base;
+    		}
+
+		}
+		else if(exponent == 0) {
+			return 1; 
+		}
+		else if(exponent < 0){
+			return 0; // Negative exponent not supported in this implementation
+		}
+
+		return result;
+	}
+	unsigned int UINT_Pow(unsigned int base, unsigned int exponent) { // realisation of pow function
+
+		unsigned int result = 1;
+		if(exponent > 0) {
+
+    		for (unsigned int i = 0; i < exponent; i++) {
+        	result *= base;
+    		}
+			
+		}
+		else if(exponent == 0) {
+			return 1; 
+		}
+		else if(exponent < 0){
+			return 0; // Negative exponent not supported in this implementation
+		}
+
+		return result;
+	}
+	float FLO_Pow(float base, float exponent) { // realisation of pow function
+
+		float result = 1.0;
+		if(exponent > 0) {
+
+    		for (int i = 0; i < exponent; i++) {
+        	result *= base;
+    		}
+			
+		}
+		else if(exponent == 0) {
+			return 1; 
+		}
+		else if(exponent < 0){
+			return 0; // Negative exponent not supported in this implementation
+		}
+
+		return result;
+	}
+	double DOU_Pow(double base, double exponent) { // realisation of pow function
+
+		double result = 1.0;
+		if(exponent > 0) {
+
+    		for (int i = 0; i < exponent; i++) {
+        	result *= base;
+    		}
+			
+		}
+		else if(exponent == 0) {
+			return 1; 
+		}
+		else if(exponent < 0){
+			return 0; // Negative exponent not supported in this implementation
+		}
+
+		return result;
+	}
+
+
+	int INT_sqrt(int number) { // realisation of sqrt function
+	}
+	unsigned int UINT_sqrt(unsigned int number) { // realisation of sqrt function
+	}
+	float FLO_sqrt(float number) { // realisation of sqrt function
+	}
+	double DOU_sqrt(double number) { // realisation of sqrt function
+	}
+
+
+	float FLO_sin() { // realisation of sin function
+	} 
+	double DOU_sin() { // realisation of sin function
+	}
+
+
+	float FLO_cos() { // realisation of cos function
+	}
+	double DOU_cos() { // realisation of cos function
+	}
+
+
+	float FLO_arcsin() { // realisation of arcsin function
+	}
+	double DOU_arcsin() { // realisation of arcsin function
+	}
+
+	float FLO_arccos() { // realisation of arccos function
+	}
+	double DOU_arccos() { // realisation of arccos function
+	}
+
+	float FLO_arctan() { // realisation of arctan function
+	}
+	double DOU_arctan() { // realisation of arctan function
+	}
 
 	/*-------------------------------------------1.Constants------------------------------------------------------------------------------------*/
 
