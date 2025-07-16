@@ -95,6 +95,12 @@ namespace Geometry{
 		
 			int result = 0;
 
+			for (unsigned int i = 0; i * i <= number; ++i) {
+				if (i * i == number) {
+					result = i;
+					break;
+				}
+			}
 			return result;
 
 		}
