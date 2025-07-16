@@ -1,5 +1,4 @@
 # Just-Geometry Library
-[Uploading Image generator_ _A modern, minimalist geometric logo featuring a blue triangle overlapping a pink circle, with clean lines and a white background._.html…]()
 
 Just-Geometry is a simple and lightweight C++ single-header library for geometric calculations and basic math functions.  
 It is designed for easy integration into any project, with no dependencies and a clear, modular structure.
