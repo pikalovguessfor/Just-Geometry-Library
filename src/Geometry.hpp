@@ -11,120 +11,222 @@
 namespace Geometry{			
 	
 	/*-------------------------------------------0.Math functions (sin, cos, arcsin etc...)---------------------------------------------------*/
+	namespace Math {
 
-	int INT_Pow(int base, int exponent) { // realisation of pow function
+		int INT_Pow(int base, int exponent) { // realisation of pow function
 
-		int result = 1;
-		if(exponent > 0) {
+			int result = 1;
+			if(exponent > 0) {
 
-    		for (int i = 0; i < exponent; i++) {
-        	result *= base;
-    		}
+				for (int i = 0; i < exponent; i++) {
+				result *= base;
+				}
+
+			}
+			else if(exponent == 0) {
+				return 1; 
+			}
+			else if(exponent < 0){
+				return 0; // Negative exponent not supported in this implementation
+			}
+
+			return result;
+		}
+		unsigned int UINT_Pow(unsigned int base, unsigned int exponent) { // realisation of pow function
+
+			unsigned int result = 1;
+			if(exponent > 0) {
+
+				for (unsigned int i = 0; i < exponent; i++) {
+				result *= base;
+				}
+				
+			}
+			else if(exponent == 0) {
+				return 1; 
+			}
+			else if(exponent < 0){
+				return 0; // Negative exponent not supported in this implementation
+			}
+
+			return result;
+		}
+		float FLO_Pow(float base, float exponent) { // realisation of pow function
+
+			float result = 1.0;
+			if(exponent > 0) {
+
+				for (int i = 0; i < exponent; i++) {
+				result *= base;
+				}
+				
+			}
+			else if(exponent == 0) {
+				return 1; 
+			}
+			else if(exponent < 0){
+				return 0; // Negative exponent not supported in this implementation
+			}
+
+			return result;
+		}
+		double DOU_Pow(double base, double exponent) { // realisation of pow function
+
+			double result = 1.0;
+			if(exponent > 0) {
+
+				for (int i = 0; i < exponent; i++) {
+				result *= base;
+				}
+				
+			}
+			else if(exponent == 0) {
+				return 1; 
+			}
+			else if(exponent < 0){
+				return 0; // Negative exponent not supported in this implementation
+			}
+
+			return result;
+		}
+
+
+		int INT_sqrt(int number) { // realisation of sqrt function
+		
+			int result = 0;
+
+			return result;
 
 		}
-		else if(exponent == 0) {
-			return 1; 
+		unsigned int UINT_sqrt(unsigned int number) { // realisation of sqrt function
+
+			unsigned int result = 0;
+
+			for (unsigned int i = 0; i * i <= number; ++i) {
+				if (i * i == number) {
+					result = i;
+					break;
+				}
+			}
+			return result;
 		}
-		else if(exponent < 0){
-			return 0; // Negative exponent not supported in this implementation
+		float FLO_sqrt(float number) { // realisation of sqrt function
+
+			float result = 0.0;
+
+			for (float i = 0.0f; i * i <= number; i += 0.01f) {
+				if (i * i == number) {
+					result = i;
+					break;
+				}
+			}
+
+			return result;
+	
+		}
+		double DOU_sqrt(double number) { // realisation of sqrt function
+
+			double result = 0.0;
+
+			for (double i = 0.0; i * i <= number; i += 0.01) {
+				if (i * i == number) {
+					result = i;
+					break;
+				}
+			}
+
+			return result;
 		}
 
-		return result;
-	}
-	unsigned int UINT_Pow(unsigned int base, unsigned int exponent) { // realisation of pow function
+		int INT_Factorial(int number){ // realisation of factorial function
 
-		unsigned int result = 1;
-		if(exponent > 0) {
+			int result = 1;
 
-    		for (unsigned int i = 0; i < exponent; i++) {
-        	result *= base;
-    		}
+			if(number < 0) {
+				return 0;
+			}
+			else if(number == 0 || number == 1) {
+				return 1; 
+			}
+			else if(number > 1) {
+
+				for(int i = 1; i <= number; ++i) {
+
+					result *= i;
+
+				}
+
+			}
+
+			return result;
+		}
+
+		float FLO_sin(float radianX) { // realisation of sin function
+			// Using Taylor series expansion for sin(x)
+
+			float result = 0.0;
+
+			return result;
+		} 
+		double DOU_sin() { // realisation of sin function
+
+			double result = 0.0;
 			
-		}
-		else if(exponent == 0) {
-			return 1; 
-		}
-		else if(exponent < 0){
-			return 0; // Negative exponent not supported in this implementation
+			return result;
 		}
 
-		return result;
-	}
-	float FLO_Pow(float base, float exponent) { // realisation of pow function
 
-		float result = 1.0;
-		if(exponent > 0) {
-
-    		for (int i = 0; i < exponent; i++) {
-        	result *= base;
-    		}
+		float FLO_cos() { // realisation of cos function
+			float result = 0.0;
 			
+			return result;
 		}
-		else if(exponent == 0) {
-			return 1; 
-		}
-		else if(exponent < 0){
-			return 0; // Negative exponent not supported in this implementation
-		}
-
-		return result;
-	}
-	double DOU_Pow(double base, double exponent) { // realisation of pow function
-
-		double result = 1.0;
-		if(exponent > 0) {
-
-    		for (int i = 0; i < exponent; i++) {
-        	result *= base;
-    		}
+		double DOU_cos() { // realisation of cos function
+			double result = 0.0;
 			
-		}
-		else if(exponent == 0) {
-			return 1; 
-		}
-		else if(exponent < 0){
-			return 0; // Negative exponent not supported in this implementation
+			return result;
 		}
 
-		return result;
-	}
 
+		float FLO_arcsin() { // realisation of arcsin function
 
-	int INT_sqrt(int number) { // realisation of sqrt function
-	}
-	unsigned int UINT_sqrt(unsigned int number) { // realisation of sqrt function
-	}
-	float FLO_sqrt(float number) { // realisation of sqrt function
-	}
-	double DOU_sqrt(double number) { // realisation of sqrt function
-	}
+			float result = 0.0;
+			
+			return result;
+		}
+		double DOU_arcsin() { // realisation of arcsin function
 
+			double result = 0.0;
+			
+			return result;
+		}
 
-	float FLO_sin() { // realisation of sin function
-	} 
-	double DOU_sin() { // realisation of sin function
-	}
+		float FLO_arccos() { // realisation of arccos function
 
+			float result = 0.0;
+			
+			return result;
+		}
+		double DOU_arccos() { // realisation of arccos function
 
-	float FLO_cos() { // realisation of cos function
-	}
-	double DOU_cos() { // realisation of cos function
-	}
+			double result = 0.0;
+			
+			return result;
+		}
 
+		float FLO_arctan() { // realisation of arctan function
 
-	float FLO_arcsin() { // realisation of arcsin function
-	}
-	double DOU_arcsin() { // realisation of arcsin function
-	}
+			float result = 0.0;
+			
+			return result;
+		}
+		double DOU_arctan() { // realisation of arctan function
 
-	float FLO_arccos() { // realisation of arccos function
-	}
-	double DOU_arccos() { // realisation of arccos function
-	}
+			double result = 0.0;
+			
+			return result;
+		}
 
-	float FLO_arctan() { // realisation of arctan function
-	}
-	double DOU_arctan() { // realisation of arctan function
 	}
 
 	/*-------------------------------------------1.Constants------------------------------------------------------------------------------------*/
