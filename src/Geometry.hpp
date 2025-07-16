@@ -5,13 +5,16 @@
  */
 
 #pragma once
-#include <math.h>
 
 
 namespace Geometry{			
 	
 	/*-------------------------------------------0.Math functions (sin, cos, arcsin etc...)---------------------------------------------------*/
+
 	namespace Math {
+
+		const float PI = 3.14159265358979323846f; // Define PI constant
+		const double DOU_PI = 3.14159265358979323846; // Define PI constant for double precision
 
 		int INT_Pow(int base, int exponent) { // realisation of pow function
 
@@ -286,53 +289,150 @@ namespace Geometry{
 		float FLO_cos(float X) { // realisation of cos function
 			float result = 0.0;
 			
-			
+			const int terms = 10;
+			float term = 1.0f;
+
+			result = 1.0f;
+
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n - 1) * (2 * n));
+				result += term;
+			}
 
 			return result;
 		}
-		double DOU_cos() { // realisation of cos function
+		double DOU_cos(float X) { // realisation of cos function
 			double result = 0.0;
 			
+			const int terms = 10;
+			double term = 1.0;
+
+			result = 1.0;
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n - 1) * (2 * n));
+				result += term;
+			}
+
 			return result;
 		}
 
+		float FLO_tan(float X) { // realisation of tan function
 
-		float FLO_arcsin() { // realisation of arcsin function
+			float result = 0.0;
+
+			if (X == 0.0f) {
+				return 0.0f; // tan(0) is 0
+			}
+
+			result = FLO_sin(X) / FLO_cos(X);
+
+			return result;
+		}
+		double DOU_tan(float X) { // realisation of tan function
+
+			double result = 0.0;
+
+			if (X == 0.0) {
+				return 0.0; // tan(0) is 0
+			}
+
+			result = DOU_sin(X) / DOU_cos(X);
+
+			return result;
+		}
+
+		float FLO_arcsin(float X) { // realisation of arcsin function
 
 			float result = 0.0;
 			
-			return result;
-		}
-		double DOU_arcsin() { // realisation of arcsin function
+			if (X < -1.0f || X > 1.0f) {
+				return 0.0f; // arcsin is undefined for values outside [-1, 1]
+			}
 
-			double result = 0.0;
+			const int terms = 10;
+			result = X;
+			float term = X;
+
+			for (int n = 1; n < terms; ++n) {
+				term *= (X * X * (2 * n - 1)) / ((2 * n) * (2 * n + 1));
+				result += term;
+			}
+			if (X < 0.0f) {
+				result = -result; // arcsin is odd function
+			}
 			
 			return result;
 		}
+		double DOU_arcsin(float X) { // realisation of arcsin function
 
-		float FLO_arccos() { // realisation of arccos function
+			double result = 0.0;
+			
+			if (X < -1.0 || X > 1.0) {
+				return 0.0; // arcsin is undefined for values outside [-1, 1]
+			}
+			const int terms = 10;
+			result = X;
+			double term = X;
 
+			for (int n = 1; n < terms; ++n) {
+				term *= (X * X * (2 * n - 1)) / ((2 * n) * (2 * n + 1));
+				result += term;
+			}
+			if (X < 0.0) {
+				result = -result; // arcsin is odd function
+			}
+
+			return result;
+		}
+
+		float FLO_arccos(float X) { // realisation of arccos function
+
+			if (X < -1.0f || X > 1.0f) return 0.0f;
+    		return PI / 2.0f - FLO_arcsin(X);
+
+		}
+		double DOU_arccos(float X) { // realisation of arccos function
+
+			if (X < -1.0 || X > 1.0) return 0.0;
+			return PI / 2.0 - DOU_arcsin(X);
+		}
+
+		float FLO_arctan(float X) { // realisation of arctan function
 			float result = 0.0;
 			
+			if (X < -1.0f || X > 1.0f) {
+				return 0.0f; // arctan is undefined for values outside [-1, 1]
+			}
+
+			const int terms = 10;
+			result = X;
+			float term = X;
+
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n + 1) * (2 * n));
+				result += term;
+			}
+
 			return result;
+			
 		}
-		double DOU_arccos() { // realisation of arccos function
+		double DOU_arctan(float X) { // realisation of arctan function
 
 			double result = 0.0;
 			
-			return result;
-		}
+			if (X < -1.0 || X > 1.0) {
+				return 0.0; // arctan is undefined for values outside [-1, 1]
+			}
 
-		float FLO_arctan() { // realisation of arctan function
+			const int terms = 10;
+			result = X;
+			double term = X;
 
-			float result = 0.0;
-			
-			return result;
-		}
-		double DOU_arctan() { // realisation of arctan function
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n + 1) * (2 * n));
+				result += term;
+			}
 
-			double result = 0.0;
-			
 			return result;
 		}
 
@@ -413,38 +513,40 @@ namespace Geometry{
 
 	/*------3.Triangle angle---*/
 	float FLO_angleOfTriangle(float sideA, float sideB, float sideC) {
-	 return acos((pow(sideB, 2) + pow(sideC, 2) - pow(sideA, 2)) / (2 * sideB * sideC)) * (180.0 / PI);
+	 return Math::FLO_arccos((Math::FLO_Pow(sideB, 2) + Math::FLO_Pow(sideC, 2) - Math::FLO_Pow(sideA, 2)) / (2 * sideB * sideC)) * (180.0 / PI);
 	}
 	double DOU_angleOfTriangle(double sideA, double sideB, double sideC) {
-	 return acos((pow(sideB, 2) + pow(sideC, 2) - pow(sideA, 2)) / (2 * sideB * sideC)) * (180.0 / PI);
+	 return Math::DOU_arccos((Math::DOU_Pow(sideB, 2) + Math::DOU_Pow(sideC, 2) - Math::DOU_Pow(sideA, 2)) / (2 * sideB * sideC)) * (180.0 / PI);
 	}
 
 	/*------4.Side of triangle-*/
 	int INT_sideOfTriangle(int angleA, int angleB, int sideC) {
-	 return (sideC * sin(angleA * (PI / 180.0))) / sin(angleB * (PI / 180.0));
+	 return (sideC * Math::FLO_sin(angleA * (PI / 180.0))) / Math::FLO_sin(angleB * (PI / 180.0));
 	}
 	unsigned int UINT_sideOfTriangle(unsigned int angleA, unsigned int angleB, unsigned int sideC) {
-	 return (sideC * sin(angleA * (PI / 180.0))) / sin(angleB * (PI / 180.0));
+	 return (sideC * Math::FLO_sin(angleA * (PI / 180.0))) / Math::FLO_sin(angleB * (PI / 180.0));
 	}
 	float FLO_sideOfTriangle(float angleA, float angleB, float sideC) {
-	 return (sideC * sin(angleA * (PI / 180.0))) / sin(angleB * (PI / 180.0));
+	 return (sideC * Math::FLO_sin(angleA * (PI / 180.0))) / Math::FLO_sin(angleB * (PI / 180.0));
 	}
 	double DOU_sideOfTriangle(double angleA, double angleB, double sideC) {
-     return (sideC * sin(angleA * (PI / 180.0))) / sin(angleB * (PI / 180.0));
+     return (sideC * Math::DOU_sin(angleA * (PI / 180.0))) / Math::DOU_sin(angleB * (PI / 180.0));
 	}	
 
 
  	/*-------------------------------------------5.Circle functions------------------------------------------------------------------------------*/
 
 	float FLO_areaOfCircle(float radius) {
-	return PI * pow(radius, 2.0);
+	return PI * Math::FLO_Pow(radius, 2.0);
 	}
-
 	double DOU_areaOfCircle(double radius) {
-	return PI * pow(radius, 2.0);
+	return PI * Math::DOU_Pow(radius, 2.0);
 	}
 
 	float FLO_Circumference(float radius) {
+	return 2 * PI * radius;
+	}
+	double DOU_Circumference(double radius) {
 	return 2 * PI * radius;
 	}
 }
