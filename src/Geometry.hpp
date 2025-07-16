@@ -244,25 +244,44 @@ namespace Geometry{
 			return result;
 		}
 
-		float FLO_sin(float radianX) { // realisation of sin function
-			// Using hypotenuse to calculate sine
-
-			float result = 0.0;
+		float FLO_sin(float X) { // realisation of sin function
 			
+			float result = 0.0;
+
+			const int terms = 10; 
+			result = X;  
+			float term = X; 
+
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n) * (2 * n + 1));
+				result += term; 
+			}
 
 			return result;
 		} 
-		double DOU_sin() { // realisation of sin function
-
+		double DOU_sin(double X) { // realisation of sin function
+		
 			double result = 0.0;
-			
+
+			const int terms = 10; 
+			result = X;  
+			double term = X; 
+
+			for (int n = 1; n < terms; ++n) {
+				term *= -X * X / ((2 * n) * (2 * n + 1));
+				result += term; 
+			}
+
 			return result;
+			
 		}
 
 
-		float FLO_cos() { // realisation of cos function
+		float FLO_cos(float X) { // realisation of cos function
 			float result = 0.0;
 			
+			
+
 			return result;
 		}
 		double DOU_cos() { // realisation of cos function
