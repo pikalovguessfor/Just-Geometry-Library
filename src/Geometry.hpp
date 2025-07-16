@@ -160,11 +160,95 @@ namespace Geometry{
 
 			return result;
 		}
+		unsigned int UINT_Factorial(unsigned int number){ // realisation of factorial function
 
-		float FLO_sin(float radianX) { // realisation of sin function
-			// Using Taylor series expansion for sin(x)
+			unsigned int result = 1;
+
+			if(number < 0) {
+				return 0;
+			}
+			else if(number == 0 || number == 1) {
+				return 1; 
+			}
+			else if(number > 1) {
+
+				for(unsigned int i = 1; i <= number; ++i) {
+
+					result *= i;
+
+				}
+
+			}
+
+			return result;
+		}
+		float FLO_Factorial(float number){ // realisation of factorial function
+
+			float result = 1.0f;
+
+			if(number < 0) {
+				return 0.0f;
+			}
+			else if(number == 0 || number == 1) {
+				return 1.0f; 
+			}
+			else if(number > 1) {
+
+				for(float i = 1.0f; i <= number; ++i) {
+
+					result *= i;
+
+				}
+
+			}
+
+			return result;
+		}
+		double DOU_Factorial(double number){ // realisation of factorial function
+
+			double result = 1.0;
+
+			if(number < 0) {
+				return 0.0;
+			}
+			else if(number == 0 || number == 1) {
+				return 1.0; 
+			}
+			else if(number > 1) {
+
+				for(double i = 1.0; i <= number; ++i) {
+
+					result *= i;
+
+				}
+
+			}
+
+			return result;
+		}
+
+		float FLO_Hypotenuse(float sideA, float sideB) { // realisation of hypotenuse function
 
 			float result = 0.0;
+
+			result = FLO_sqrt(FLO_Pow(sideA, 2) + FLO_Pow(sideB, 2));
+
+			return result;
+		}
+		double DOU_Hypotenuse(double sideA, double sideB) { // realisation of hypotenuse function
+
+			double result = 0.0;
+
+			result = DOU_sqrt(DOU_Pow(sideA, 2) + DOU_Pow(sideB, 2));
+
+			return result;
+		}
+
+		float FLO_sin(float radianX) { // realisation of sin function
+			// Using hypotenuse to calculate sine
+
+			float result = 0.0;
+			
 
 			return result;
 		} 
