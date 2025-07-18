@@ -33,12 +33,12 @@ int main() {
 
 ```
 
- - **How to use**
+**How to use**
  - Copy Geometry.hpp to your project.
  - Include it in your source file:
  - Use functions from the Geometry::Math and Geometry::Geom namespaces as needed.
  - License
  - This library is free to use for any purpose.
 
- - **Just-Geometry brings together all your geometry and math needs in a single, easy-to-use file.**
+**Just-Geometry brings together all your geometry and math needs in a single, easy-to-use file.**
 
