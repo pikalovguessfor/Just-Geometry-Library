@@ -5,20 +5,20 @@ This library is designed to be easy to use, educational, and highly portable. It
 
 ## Features
 
-- **Geometry**
+**Geometry**
  - Calculations for areas, perimeters, diagonals, radii, chord/arc/sector lengths, medians, heights, bisectors, inscribed and circumscribed circles, and more.
 Supports a variety of shapes: squares, rectangles, triangles, circles, ellipses, regular polygons, stars, prisms, cylinders, cones, spheres, and more.
  - Advanced geometric functions for polygons and solids, including spherical geometry.
    
-- **Math**
+**Math**
  - Custom implementations of mathematical functions: pow, sqrt, cbrt, factorial, sin, cos, tan, arcsin, arccos, arctan (using Taylor series).
  - All functions are implemented for multiple data types: int, unsigned int, float, double.
    
- - **Usability**
+**Usability**
  - No dependencies: just include one header file in your project.
  - Functions are organized into namespaces: Geometry::Math for mathematical operations and Geometry::Geom for geometric calculations.
  - Suitable for education, olympiads, labs, prototyping, and self-study.
- ## Example
+## Example
 ```cpp
 #include "Geometry.hpp"
 #include <iostream>
